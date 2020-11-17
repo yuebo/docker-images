@@ -1,6 +1,6 @@
 dbm-agent init
 cp -r /root/pkg /usr/local/dbm-agent
-dbma-cli-build-slave --host=master --port=3306 build-slave
+dbma-cli-build-slave --host=master --max-mem=1024 --port=3306 build-slave
 ln /usr/local/mysql-8.0.22-linux-glibc2.12-x86_64/bin/mysql /usr/bin/mysql
 ln /usr/local/mysql-8.0.22-linux-glibc2.12-x86_64/bin/mysqldump /usr/bin/mysqldump
 ln /usr/local/mysql-8.0.22-linux-glibc2.12-x86_64/bin/mysqlslap /usr/bin/mysqlslap
