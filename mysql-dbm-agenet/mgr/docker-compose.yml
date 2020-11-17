@@ -1,0 +1,45 @@
+version: '2'
+services:
+  mgr1:
+    image: dbm-agent
+    volumes:
+      - ../init:/root/init
+      - ../pkg:/root/pkg
+    restart: always
+    privileged: true
+    ports:
+      - 13306:3306
+    networks:
+      mgr:
+        ipv4_address: 192.168.100.101
+  mgr2:
+    image: dbm-agent
+    volumes:
+      - ../init:/root/init
+      - ../pkg:/root/pkg
+    restart: always
+    privileged: true
+    ports:
+      - 23306:3306
+    networks:
+      mgr:
+        ipv4_address: 192.168.100.102
+  mgr3:
+    image: dbm-agent
+    volumes:
+      - ../init:/root/init
+      - ../pkg:/root/pkg
+    restart: always
+    privileged: true
+    ports:
+      - 33306:3306
+    networks:
+      mgr:
+        ipv4_address: 192.168.100.103
+
+networks:
+  mgr:
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+          gateway: 192.168.100.1
