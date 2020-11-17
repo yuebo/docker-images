@@ -1,0 +1,9 @@
+version: '3.1'
+services:
+  ssh:
+    image: kroniak/ssh-client
+    volumes:
+      - /home/kd/.ssh:/root/.ssh
+    entrypoint: "ssh -tt -L 0.0.0.0:8443:192.168.7.100:443 root@192.168.7.110"
+    ports:
+      - 443:8443

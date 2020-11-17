@@ -1,0 +1,24 @@
+version: '3'
+services:
+  zookeeper:
+    image: index.docker.io/wurstmeister/zookeeper:latest
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    restart: always
+    ports:
+      - 2181:2181
+  kafka:
+    image: index.docker.io/wurstmeister/kafka:2.11-1.1.0
+    restart: always
+    ports:
+      - 9092:9092
+      - 32770:32770
+    links:
+      - zookeeper:zookeeper
+    environment:
+      - TZ=Asia/Shanghai
+      - KAFKA_ADVERTISED_HOST_NAME=localhost
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro

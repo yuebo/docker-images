@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dockerui:
+    image: uifd/ui-for-docker
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - 9000:9000
+    privileged: true
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai

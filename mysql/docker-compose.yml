@@ -1,0 +1,15 @@
+version: '3.1'
+services:
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./conf/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf:rw
+      - ./data:/var/lib/mysql:rw
+      - ./log:/var/log/mysql:rw
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - TZ=Asia/Shanghai
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      - 3306:3306
+    restart: always

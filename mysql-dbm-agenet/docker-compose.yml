@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  master:
+    image: dbm-agent
+    volumes:
+      - ./init:/root/init
+      - ./pkg:/root/pkg
+    ports:
+      - 13306:3306
+    privileged: true
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+  slaver:
+    image: dbm-agent
+    volumes:
+      - ./init:/root/init
+      - ./pkg:/root/pkg
+    ports:
+      - 23306:3306
+    privileged: true
+    restart: always
+    links:
+      - master:master
+    environment:
+      - TZ=Asia/Shanghai
