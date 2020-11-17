@@ -17,6 +17,11 @@ docker-compose up -d
 docker-compose exec mgr1 mysql -h127.0.0.1 -P3306 -uroot -pdbma@0352 -e"select * from performance_schema.replication_group_members;"
 ```
 
+部署innodb-cluster
+```bash
+docker-compose exec mgr1 sh /root/init/mysqlsh.sh
+```
+
 重新加入集群
 ```bash
 docker build . -t dbm-agent
