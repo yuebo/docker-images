@@ -11,7 +11,7 @@ services:
       - 9001:9001
     environment:
       - MINIO_ROOT_USER=admin
-      - MINIO_ROOT_PASSWORD=P@ssw0rd
+      - MINIO_ROOT_PASSWORD=password
       - MINIO_DISTRIBUTED_MODE_ENABLED=yes
       - MINIO_DISTRIBUTED_NODES=minio-test1.eappcat.com,minio-test2.eappcat.com,minio-test3.eappcat.com,minio-test4.eappcat.com
       - MINIO_SKIP_CLIENT=yes
